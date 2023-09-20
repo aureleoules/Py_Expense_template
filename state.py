@@ -1,6 +1,7 @@
 import json
 
 def load_state():
+    # si le state.json existe pas, on le cree
     try:
         file = open("state.json","r")
     except FileNotFoundError:
@@ -13,7 +14,7 @@ def load_state():
     return state
 
 def save_state(state):
-    # write state.json
+    # sauvegarde
     file = open("state.json","w")
     json.dump(state,file)
     file.close()

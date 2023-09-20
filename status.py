@@ -6,6 +6,8 @@ def show_status():
 
     debts = {}
 
+
+    # calcule les dettes betement pour chaque personne, les dettes sont equitables
     for expense in state['expenses']:
         amount_per_person = float(expense['amount']) / len(expense['people'])
         for person in expense['people']:
@@ -17,6 +19,7 @@ def show_status():
                 debts[person][expense['spender']] = 0
             debts[person][expense['spender']] += amount_per_person
 
+    # annule les dettes entre deux personnes mutuellement
     for person in debts:
         for spender in debts[person]:
             if spender in debts and person in debts[spender]:
@@ -28,6 +31,7 @@ def show_status():
                     debts[spender][person] = 0
 
 
+    # affiche les dettes
     for person in debts:
         for spender in debts[person]:
             print("{} owes {} to {}".format(person, debts[person][spender], spender))

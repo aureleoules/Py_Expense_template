@@ -31,8 +31,8 @@ def new_expense(*args):
     ]
     infos = prompt(expense_questions)
 
-    # ask for people involved
-
+    # choisir entre qui partager les dettes
+    # le multiselect est tres pratique https://inquirerpy.readthedocs.io/en/latest/pages/prompts/list.html
     people_questions = [
         {
             "type":"checkbox",
